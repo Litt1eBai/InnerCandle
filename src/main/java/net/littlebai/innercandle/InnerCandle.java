@@ -1,6 +1,8 @@
 package net.littlebai.innercandle;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,17 +15,28 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
+import static net.littlebai.innercandle.InnerCandle.MOD_ID;
+
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("innercandle")
+@Mod(InnerCandle.MOD_ID)
 public class InnerCandle
 {
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final String MOD_ID = "innercandle";
+    public static final Logger LOGGER = LogManager.getLogger();
+    /*
+    public static final CreativeModeTab INNERCANDLE_TAB = new CreativeModeTab(MOD_ID) {
+        @Override
+        public ItemStack makeIcon() {
+            return null;
+        }
+    };
+    */
     public InnerCandle()
     {
         // Register the setup method for modloading
@@ -47,7 +60,7 @@ public class InnerCandle
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // Some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo(InnerCandle.MOD_ID, "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)

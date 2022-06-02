@@ -1,2 +1,4 @@
-package net.littlebai.innercandle.init;public class ModItems {
+package net.littlebai.innercandle.init;
+
+public class ModItems {
 }
