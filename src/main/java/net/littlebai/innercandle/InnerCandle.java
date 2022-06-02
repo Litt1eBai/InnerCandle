@@ -5,6 +5,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,14 +31,15 @@ public class InnerCandle
 
     public static final String MOD_ID = "innercandle";
     public static final Logger LOGGER = LogManager.getLogger();
-    /*
+
     public static final CreativeModeTab INNERCANDLE_TAB = new CreativeModeTab(MOD_ID) {
+        @OnlyIn(Dist.CLIENT)
         @Override
         public ItemStack makeIcon() {
             return null;
         }
     };
-    */
+
     public InnerCandle()
     {
         // Register the setup method for modloading
